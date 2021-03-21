@@ -1,0 +1,21 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package com.canseverayberk.samples.grpcdemo;
+
+message PullRequest {
+    int32 offset = 1;
+    int32 fetchCount = 2;
+}
+
+message PullResponse {
+    Item item = 1;
+}
+
+message Item {
+    string guid = 1;
+    string content = 2;
+}
+
+service PullService {
+    rpc pull(PullRequest) returns (PullResponse);
+}
